@@ -14,16 +14,18 @@ RUN apt-get install -qq -y software-properties-common && \
 apt-add-repository ppa:modriscoll/nzbget && \
 add-apt-repository ppa:kirillshkrogalev/ffmpeg-next && \
 apt-get update -qq && \
-apt-get install -qq -y nzbget ffmpeg wget unrar unzip p7zip
+apt-get install -qq -y nzbget ffmpeg wget unrar unzip p7zip git
 
 VOLUME /config
 VOLUME /downloads
 
 EXPOSE 6789
 
-#Setup NZBGet init service 
+RUN mkdir -p /etc/my_init.d
+ADD init/setup.sh /etc/my_init.d/setup.sh
+RUN chmod +x /etc/my_init.d/setup.sh
+
+#Setup NZBGet init service
 RUN mkdir /etc/service/nzbget
 ADD init/nzbget.sh /etc/service/nzbget/run
 RUN chmod +x /etc/service/nzbget/run
-
-RUN cp /usr/share/nzbget/nzbget.conf /config
