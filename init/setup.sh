@@ -34,12 +34,15 @@ fi
 
 if [[ ! -e /config/ppscripts/nzbToMedia ]]; then
   git clone https://github.com/clinton-hall/nzbToMedia.git /config/ppscripts/nzbToMedia
+  chown -R nobody:users /config/ppscripts/nzbToMedia
 fi
 
 if [[ ! -e /config/ppscripts/GetScripts ]]; then
   git clone https://github.com/clinton-hall/GetScripts.git /config/ppscripts/GetScripts
+  chown -R nobody:users /config/ppscripts/GetScripts
 fi
 
 if [[ ! -e /config/ppscripts/tekuilaget ]]; then
   git clone https://github.com/mikeodr/tekuilaget.git /config/ppscripts/tekuilaget
+  chown -R nobody:users /config/ppscripts/tekuilaget
 fi
