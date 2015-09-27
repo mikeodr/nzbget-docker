@@ -46,3 +46,8 @@ if [[ ! -e /config/ppscripts/tekuilaget ]]; then
   git clone https://github.com/mikeodr/tekuilaget.git /config/ppscripts/tekuilaget
   chown -R nobody:users /config/ppscripts
 fi
+
+if ! which tekuila; then
+  apt-get install -y -qq python-pip
+  pip install tekuila
+fi
