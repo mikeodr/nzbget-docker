@@ -14,7 +14,9 @@ RUN apt-get install -qq -y software-properties-common
 RUN apt-add-repository ppa:modriscoll/nzbget
 RUN add-apt-repository ppa:kirillshkrogalev/ffmpeg-next
 RUN apt-get update -qq
-RUN apt-get install -qq -y nzbget ffmpeg wget unrar unzip p7zip git
+RUN apt-get install -qq -y nzbget ffmpeg wget unrar unzip p7zip git python-pip
+RUN apt-get upgrade -qq
+RUN pip install tekuila
 
 VOLUME /config
 VOLUME /downloads
