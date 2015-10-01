@@ -48,6 +48,7 @@ if [[ ! -e /config/ppscripts/tekuilaget ]]; then
 fi
 
 if ! which tekuila; then
+  apt-get upgrade -qq
   apt-get install -y -qq python-pip
   pip install tekuila
 fi

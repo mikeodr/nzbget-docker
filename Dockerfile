@@ -10,11 +10,11 @@ RUN usermod -u 99 nobody
 RUN usermod -g 100 nobody
 
 RUN apt-get update -qq
-RUN apt-get install -qq -y software-properties-common && \
-apt-add-repository ppa:modriscoll/nzbget && \
-add-apt-repository ppa:kirillshkrogalev/ffmpeg-next && \
-apt-get update -qq && \
-apt-get install -qq -y nzbget ffmpeg wget unrar unzip p7zip git
+RUN apt-get install -qq -y software-properties-common
+RUN apt-add-repository ppa:modriscoll/nzbget
+RUN add-apt-repository ppa:kirillshkrogalev/ffmpeg-next
+RUN apt-get update -qq
+RUN apt-get install -qq -y nzbget ffmpeg wget unrar unzip p7zip git
 
 VOLUME /config
 VOLUME /downloads
