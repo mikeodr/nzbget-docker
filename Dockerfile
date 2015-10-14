@@ -17,6 +17,7 @@ RUN apt-get update -qq
 RUN apt-get install -qq -y nzbget ffmpeg wget unrar unzip p7zip git python-pip
 RUN apt-get upgrade -qq
 RUN pip install tekuila
+RUN pip install pynzbget
 
 VOLUME /config
 VOLUME /downloads
