@@ -16,7 +16,15 @@ RUN add-apt-repository ppa:kirillshkrogalev/ffmpeg-next
 RUN apt-get update -qq
 RUN apt-get install -qq -y nzbget ffmpeg wget unrar unzip p7zip git python-pip
 RUN apt-get upgrade -qq
-RUN pip install tekuila
+
+# RUN pip install tekuila
+
+RUN cd /tmp && \
+wget https://github.com/mikeodr/tekuila/archive/2.0.0.tar.gz -O tekuila.tar.gz && \
+tar xzf tekuila.tar.gz && \
+cd tekuila-2.0.0 && \
+python setup.py install
+
 RUN pip install pynzbget
 
 VOLUME /config
