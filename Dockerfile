@@ -20,9 +20,9 @@ RUN apt-get upgrade -qq
 # RUN pip install tekuila
 
 RUN cd /tmp && \
-wget https://github.com/mikeodr/tekuila/archive/2.0.0.tar.gz -O tekuila.tar.gz && \
+wget https://github.com/mikeodr/tekuila/archive/2.0.1.tar.gz -O tekuila.tar.gz && \
 tar xzf tekuila.tar.gz && \
-cd tekuila-2.0.0 && \
+cd tekuila-2.0.1 && \
 python setup.py install
 
 RUN pip install pynzbget
