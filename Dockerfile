@@ -6,16 +6,17 @@ ENV HOME /root
 
 CMD ["/sbin/my_init"]
 
-RUN usermod -u 99 nobody
-RUN usermod -g 100 nobody
+RUN usermod -u 99 nobody && \
+usermod -g 100 nobody
 
-RUN apt-get update -qq
-RUN apt-get install -qq -y software-properties-common
-RUN apt-add-repository ppa:modriscoll/nzbget
-RUN add-apt-repository ppa:kirillshkrogalev/ffmpeg-next
-RUN apt-get update -qq
-RUN apt-get install -qq -y nzbget ffmpeg wget unrar unzip p7zip git python-pip
-RUN apt-get upgrade -qq
+RUN apt-get update -qq && \
+apt-get install -qq -y software-properties-common && \
+apt-add-repository ppa:modriscoll/nzbget && \
+add-apt-repository ppa:kirillshkrogalev/ffmpeg-next && \
+apt-get update -qq && \
+apt-get install -qq -y nzbget ffmpeg wget unrar unzip p7zip git python-pip && \
+apt-get upgrade -qq && apt-get autoclean && apt-get autoremove && \
+rm -rf /var/lib/apt/lists/*
 
 # RUN pip install tekuila
 
@@ -23,7 +24,8 @@ RUN cd /tmp && \
 wget https://github.com/mikeodr/tekuila/archive/2.0.1.tar.gz -O tekuila.tar.gz && \
 tar xzf tekuila.tar.gz && \
 cd tekuila-2.0.1 && \
-python setup.py install
+python setup.py install && \
+rm -r /tmp/tekuila*
 
 RUN pip install pynzbget
 
