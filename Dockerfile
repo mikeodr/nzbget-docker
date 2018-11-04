@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.17
+FROM phusion/baseimage:0.11
 MAINTAINER Mike O'Driscoll <mike@mikeodriscoll.ca>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -12,9 +12,8 @@ usermod -g 100 nobody
 RUN apt-get update -qq && \
 apt-get install -qq -y software-properties-common && \
 apt-add-repository ppa:modriscoll/nzbget && \
-add-apt-repository ppa:kirillshkrogalev/ffmpeg-next && \
 apt-get update -qq && \
-apt-get install -qq -y nzbget ffmpeg wget unrar unzip p7zip git python-pip supervisor && \
+apt-get install -qq -y nzbget wget unrar unzip p7zip git python-pip supervisor && \
 apt-get upgrade -qq && apt-get autoclean && apt-get autoremove && \
 rm -rf /var/lib/apt/lists/*
 
